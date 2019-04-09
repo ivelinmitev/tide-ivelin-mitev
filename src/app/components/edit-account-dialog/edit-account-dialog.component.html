@@ -4,12 +4,25 @@
     <mat-form-field>
       <input matInput formControlName="fullName" placeholder="Enter full name">
     </mat-form-field>
-    <mat-form-field>
-      <input matInput formControlName="dateOfBirth" placeholder="Date of Birth">
-    </mat-form-field>
+
+    <div formGroupName="dateOfBirth">
+      <mat-form-field>
+        <input matInput formControlName="day" placeholder="Enter day">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="month" placeholder="Enter month">
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="year" placeholder="Enter year">
+      </mat-form-field>
+
+    </div>
+
   </mat-dialog-content>
   <mat-dialog-actions>
-    <button mat-button type="submit">Edit</button>
+    <button mat-button type="submit">Update</button>
     <button mat-button type="button" mat-dialog-close>Cancel</button>
   </mat-dialog-actions>
 </form>

@@ -136,5 +136,10 @@
       }
     }
   },
-  "defaultProject": "tide-ivelin-mitev"
+  "defaultProject": "tide-ivelin-mitev",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

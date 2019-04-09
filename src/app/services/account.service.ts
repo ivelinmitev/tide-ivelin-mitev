@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { Account } from '../models/Account';
 
-
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+  })
+};
 
 @Injectable()
 export class AccountService {
@@ -13,27 +16,18 @@ export class AccountService {
       private http: HttpClient
   ) {}
 
-// Gets all accounts
-  getAccounts() {
+// Get all accounts
+  getAccounts(): Observable<Account[]> {
     return this.http.get<Account[]>(this.baseUrl);
   }
 
-  // Gets all accounts
-  getAccount(id: number) {
+  // Get account by id
+  getAccount(id: number): Observable<Account> {
     return this.http.get<Account>(`${this.baseUrl}/${id}`);
   }
 
-// Creates a account
-  createAccount(account) {
-    return this.http.post(this.baseUrl, account);
+// Update an account
+  updateAccount(account): Observable<Account> {
+    return this.http.put<Account>(this.baseUrl, account, httpOptions);
   }
-// Updates a account
-  updateAccount(account) {
-    return this.http.put(this.baseUrl, JSON.stringify(account));
-  }
-// Deletes a account
- public deleteAccount(id) {
-    return this.http.delete(`${this.baseUrl}/${id}`);
-  }
-
 }

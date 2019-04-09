@@ -1,18 +1,21 @@
-<mat-card>
+<mat-card class="mat-elevation">
   <mat-card-title color="primary">
     Accounts
   </mat-card-title>
   <mat-divider></mat-divider>
   <mat-card-content>
-    <mat-list>
-      <mat-list-item *ngFor="let account of accounts">
-        {{ account.id }}
-        {{ account.fullName }}
-        {{ account.dateOfBirth }}
-        <button  mat-raised-button (click)="editAccount(account.id)"  color="primary">Edit</button>
-        <mat-divider></mat-divider>
-      </mat-list-item>
-    </mat-list>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Date of Birth</th>
+      </tr>
+      <tr *ngFor="let account of accounts">
+        <td>{{ account.fullName }}</td>
+        <td>{{ account.dateOfBirth }}</td>
+        <td>
+          <button  mat-icon-button (click)="editAccount(account.id)"  color="primary"> <mat-icon>edit</mat-icon></button>
+        </td>
+      </tr>
+    </table>
   </mat-card-content>
 </mat-card>
-
